@@ -3,18 +3,24 @@ package utils
 import (
 	"log"
 	"os"
+	"path/filepath"
 	"projects/code-edu/domain"
+	"runtime"
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 )
 
 func ConnectDB() *gorm.DB {
 
-	err := godotenv.Load()
+	_, b, _, _ := runtime.Caller(0)
+	basepath := filepath.Dir(b)
+
+	err := godotenv.Load(basepath + "/.env")
+
 	if err != nil {
 		log.Fatalf("db.ConnectDb(): Error loading .env file - %v", err)
-		return err
 	}
 
 	dsn := os.Getenv("dsn")
