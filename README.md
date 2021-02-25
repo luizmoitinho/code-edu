@@ -1,5 +1,6 @@
 ## Get Started
-1. Clone the project in home/src/github.com/
+1. Clone the project in  **home/src/github.com/** and open it in the terminal
+ 
 
 2. Up docker
 ```shell
