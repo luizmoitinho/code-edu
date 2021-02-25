@@ -8,13 +8,15 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+//Base ...
 type Base struct {
-	ID        string     `json:id gorm:"type:uuid;primary_key"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updaed_at"`
-	DeletedAt time.Time `json:"deleted_at"`
+	ID        string    `gorm:"type:uuid;primary_key" valid:"uuid"`
+	CreatedAt time.Time `valid:"-"`
+	UpdatedAt time.Time `valid:"-"`
+	//DeletedAt time.Time `json:"deleted_at"`
 }
 
+//BeforeCreate ...
 func (base *Base) BeforeCreate(scope *gorm.Scope) error {
 
 	err := scope.SetColumn("CreatedAt", time.Now())
