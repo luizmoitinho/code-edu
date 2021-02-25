@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"log"
+	"fmt"
 	"time"
 
 	"github.com/asaskevich/govalidator"
@@ -26,6 +26,7 @@ func init() {
 
 //NewUser ... Validate and create a new user instance
 func NewUser(name string, email string, password string) (*User, error) {
+
 	user := &User{
 		Name:     name,
 		Email:    email,
@@ -55,9 +56,13 @@ func (user *User) validate() error {
 //Prepare ... create a token and validate password
 func (user *User) Prepare() error {
 
+	if user.Password == "" {
+		return fmt.Errorf("Password cannot be blank")
+	}
+
 	password, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
-		log.Fatal("error in user.Prepare(): %V", err)
+		fmt.Printf("error in user.Prepare(): %v", err)
 		return err
 	}
 
@@ -68,8 +73,9 @@ func (user *User) Prepare() error {
 	user.Token = uuid.NewV4().String()
 
 	err = user.validate()
+
 	if err != nil {
-		log.Fatal("error in user.Prepare(), user.validate(): %V", err)
+		fmt.Printf("error in user.Prepare(), user.validate(): %v", err)
 		return err
 	}
 
