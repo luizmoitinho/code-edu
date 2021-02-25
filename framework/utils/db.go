@@ -1,11 +1,13 @@
 package utils
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
-	"github.com/service-user/domain"
 	"runtime"
+
+	"github.com/service-user/domain"
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
@@ -28,7 +30,7 @@ func ConnectDB() *gorm.DB {
 	db, err := gorm.Open("postgres", dsn)
 
 	if err != nil {
-		log.Fatalf("Erro conecting to database db.ConnectDB()")
+		fmt.Printf("Erro conecting to database db.ConnectDB(): %v", err)
 		panic(err)
 	}
 
