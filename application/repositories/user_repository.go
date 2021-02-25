@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"log"
-	"projects/code-edu/domain"
+	"github.com/service-user/domain"
 
 	"github.com/jinzhu/gorm"
 )

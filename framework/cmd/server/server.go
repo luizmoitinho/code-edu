@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	"projects/code-edu/application/repositories"
-	"projects/code-edu/domain"
-	"projects/code-edu/framework/utils"
+	"github.com/service-user/application/repositories"
+	"github.com/service-user/domain"
+	"github.com/service-user/framework/utils"
 )
 
 func main() {

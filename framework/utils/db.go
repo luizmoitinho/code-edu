@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"projects/code-edu/domain"
+	"github.com/service-user/domain"
 	"runtime"
 
 	"github.com/jinzhu/gorm"
