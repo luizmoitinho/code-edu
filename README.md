@@ -19,7 +19,9 @@ go mod tidy
 ```
 
 4. Run the file server.go with and test user persistence:
-```shell go run framework/cmd/server/server.go ```
+```shell 
+go run framework/cmd/server/server.go 
+```
 
 Response:
 ```shell
